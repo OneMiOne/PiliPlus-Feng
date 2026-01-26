@@ -1,4 +1,4 @@
-name: Build For Mac
+name: Build for Mac
 
 on:
   workflow_call:
