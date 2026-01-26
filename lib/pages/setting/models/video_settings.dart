@@ -78,7 +78,7 @@ List<SettingsModel> get videoSettings => [
         builder: (context) {
           String host = Pref.liveCdnUrl ?? '';
           return AlertDialog(
-            title: const Text('输入CDN host'),
+            title: const Text('输入CDN Host'),
             content: TextFormField(
               initialValue: host,
               autofocus: true,
