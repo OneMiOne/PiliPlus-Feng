@@ -95,7 +95,7 @@ List<SettingsModel> get playSettings => [
   ),
   getVideoFilterSelectModel(
     title: '双击快进/快退时长',
-    suffix: 's',
+    suffix: '秒',
     key: SettingBoxKey.fastForBackwardDuration,
     values: [5, 10, 15],
     defaultValue: 10,
@@ -110,7 +110,7 @@ List<SettingsModel> get playSettings => [
   getVideoFilterSelectModel(
     title: '滑动快进/快退时长',
     subtitle: '从播放器一端滑到另一端的快进/快退时长',
-    suffix: Pref.useRelativeSlide ? '%' : 's',
+    suffix: Pref.useRelativeSlide ? '%' : '秒',
     key: SettingBoxKey.sliderDuration,
     values: [25, 50, 90, 100],
     defaultValue: 90,
@@ -159,7 +159,7 @@ List<SettingsModel> get playSettings => [
     defaultVal: true,
   ),
   NormalModel(
-    title: 'SuperChat (醒目留言) 显示类型',
+    title: 'SuperChat（醒目留言）显示类型',
     leading: const Icon(Icons.live_tv),
     getSubtitle: () => '当前:「${Pref.superChatType.title}」',
     onTap: (context, setState) async {
@@ -167,7 +167,7 @@ List<SettingsModel> get playSettings => [
         context: context,
         builder: (context) {
           return SelectDialog<SuperChatType>(
-            title: 'SuperChat (醒目留言) 显示类型',
+            title: 'SuperChat（醒目留言）显示类型',
             value: Pref.superChatType,
             values: SuperChatType.values.map((e) => (e, e.title)).toList(),
           );
@@ -225,7 +225,7 @@ List<SettingsModel> get playSettings => [
   if (Platform.isAndroid) ...[
     SwitchModel(
       title: '后台画中画',
-      subtitle: '进入后台时以小窗形式（PiP）播放',
+      subtitle: '进入后台时以小窗形式（Pip）播放',
       leading: const Icon(Icons.picture_in_picture_outlined),
       setKey: SettingBoxKey.autoPiP,
       defaultVal: false,
