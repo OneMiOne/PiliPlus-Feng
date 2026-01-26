@@ -1,4 +1,4 @@
-name: Build For Android
+name: Build for Android
 on:
     workflow_dispatch:
         inputs:
