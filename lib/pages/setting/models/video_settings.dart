@@ -357,7 +357,20 @@ List<SettingsModel> get videoSettings => [
   NormalModel(
     title: '视频同步',
     leading: const Icon(Icons.view_timeline_outlined),
-    getSubtitle: () => '当前：${Pref.videoSync}（此项即mpv的--video-sync）',
+    getSubtitle: () {
+      const syncMap = {
+        'audio': '音频同步',
+        'display-resample': '显示器重采样',
+        'display-resample-vdrop': '重采样并丢视频帧',
+        'display-resample-desync': '重采样并异步',
+        'display-tempo': '显示器倍速同步',
+        'display-vdrop': '显示器丢帧',
+        'display-adrop': '显示器丢音频',
+        'display-desync': '显示器异步',
+        'desync': '完全异步',
+      };
+      return '当前：${syncMap[Pref.videoSync] ?? Pref.videoSync}';
+    },
     onTap: (context, setState) async {
       final result = await showDialog<String>(
         context: context,
@@ -366,16 +379,16 @@ List<SettingsModel> get videoSettings => [
             title: '视频同步',
             value: Pref.videoSync,
             values: const [
-              'audio',
-              'display-resample',
-              'display-resample-vdrop',
-              'display-resample-desync',
-              'display-tempo',
-              'display-vdrop',
-              'display-adrop',
-              'display-desync',
-              'desync',
-            ].map((e) => (e, e)).toList(),
+              ('audio', '音频同步 (默认)'),
+              ('display-resample', '显示器重采样 (推荐)'),
+              ('display-resample-vdrop', '重采样并丢视频帧'),
+              ('display-resample-desync', '重采样并异步'),
+              ('display-tempo', '显示器倍速同步'),
+              ('display-vdrop', '显示器丢帧'),
+              ('display-adrop', '显示器丢音频'),
+              ('display-desync', '显示器异步'),
+              ('desync', '完全异步'),
+            ].toList(),
           );
         },
       );
@@ -388,7 +401,14 @@ List<SettingsModel> get videoSettings => [
   NormalModel(
     title: '硬解模式',
     leading: const Icon(Icons.memory_outlined),
-    getSubtitle: () => '当前：${Pref.hardwareDecoding}（此项即mpv的--hwdec）',
+    getSubtitle: () {
+      final currentKeys = Pref.hardwareDecoding.split(',');
+      final currentDescs = currentKeys.map((key) {
+        final match = HwDecType.values.where((e) => e.hwdec == key);
+        return match.isNotEmpty ? match.first.desc : key;
+      });
+      return '当前：${currentDescs.join('、')}';
+    },
     onTap: (context, setState) async {
       final result = await showDialog<List<String>>(
         context: context,
@@ -397,8 +417,7 @@ List<SettingsModel> get videoSettings => [
             title: '硬解模式',
             initValues: Pref.hardwareDecoding.split(','),
             values: {
-              for (final e in HwDecType.values)
-                e.hwdec: '${e.hwdec}\n${e.desc}',
+              for (final e in HwDecType.values) e.hwdec: e.desc,
             },
           );
         },
