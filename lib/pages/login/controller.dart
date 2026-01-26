@@ -217,9 +217,9 @@ class LoginPageController extends GetxController
                 // 使用了重复的 challenge   Duplicate challenges are used
                 // 检查获取 challenge 是否进行了缓存  Check if the fetch challenge is cached
               } else if (code == "-20") {
-                // 尝试过多, 重新引导用户触发验证即可 Try too many times, lead the user to request verification again
+                // 尝试过多，重新引导用户触发验证即可 Try too many times, lead the user to request verification again
               } else if (code == "-10") {
-                // 预判断时被封禁, 不会再进行图形验证 Banned during pre-judgment, and no more image captcha verification
+                // 预判断时被封禁，不会再进行图形验证 Banned during pre-judgment, and no more image captcha verification
               } else if (code == "-2") {
                 // Dart 调用异常 Call exception
               } else if (code == "-1") {
@@ -235,10 +235,10 @@ class LoginPageController extends GetxController
     }
   }
 
-  // cookie登录
+  // Cookie登录
   Future<void> loginByCookie() async {
     if (cookieTextController.text.isEmpty) {
-      SmartDialog.showToast('cookie不能为空');
+      SmartDialog.showToast('Cookie不能为空');
       return;
     }
     try {
@@ -317,7 +317,7 @@ class LoginPageController extends GetxController
           return;
         }
         // return;
-        //{"code":0,"message":"0","ttl":1,"data":{"status":2,"message":"本次登录环境存在风险, 需使用手机号进行验证或绑定","url":"https://passport.bilibili.com/h5-app/passport/risk/verify?tmp_token=9e785433940891dfa78f033fb7928181&request_id=e5a6d6480df04097870be56c6e60f7ef&source=risk","token_info":null,"cookie_info":null,"sso":null,"is_new":false,"is_tourist":false}}
+        //{"code":0,"message":"0","ttl":1,"data":{"status":2,"message":"本次登录环境存在风险，需使用手机号进行验证或绑定","url":"https://passport.bilibili.com/h5-app/passport/risk/verify?tmp_token=9e785433940891dfa78f033fb7928181&request_id=e5a6d6480df04097870be56c6e60f7ef&source=risk","token_info":null,"cookie_info":null,"sso":null,"is_new":false,"is_tourist":false}}
         String url = data['url']!;
         Uri currentUri = Uri.parse(url);
         final safeCenterRes = await LoginHttp.safeCenterGetInfo(
@@ -720,7 +720,7 @@ class LoginPageController extends GetxController
     if (Accounts.main.isLogin) {
       SmartDialog.showToast('登录成功');
     } else {
-      SmartDialog.showToast('登录成功, 请先设置账号模式');
+      SmartDialog.showToast('登录成功，请先设置账号模式');
       await switchAccountDialog(Get.context!);
     }
   }
@@ -740,7 +740,7 @@ class LoginPageController extends GetxController
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('选择账号mid, 为0时使用匿名'),
+        title: const Text('选择账号MID，为0时使用匿名'),
         titlePadding: const .only(left: 22, top: 16, right: 22),
         contentPadding: const .symmetric(vertical: 5),
         actionsPadding: const .only(left: 16, right: 16, bottom: 10),
