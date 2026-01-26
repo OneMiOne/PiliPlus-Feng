@@ -9,8 +9,8 @@ import 'package:get/get.dart';
 
 List<SettingsModel> get recommendSettings => [
   const SwitchModel(
-    title: '首页使用app端推荐',
-    subtitle: '若web端推荐不太符合预期，可尝试切换至app端推荐',
+    title: '首页使用App端推荐',
+    subtitle: '若Web端推荐不太符合预期，可尝试切换至App端推荐',
     leading: Icon(Icons.model_training_outlined),
     setKey: SettingBoxKey.appRcmd,
     defaultVal: true,
@@ -64,7 +64,7 @@ List<SettingsModel> get recommendSettings => [
     },
   ),
   getBanWordModel(
-    title: 'App推荐/热门/排行榜: 视频分区关键词过滤',
+    title: 'App推荐/热门/排行榜/视频分区关键词过滤',
     key: SettingBoxKey.banWordForZone,
     onChanged: (value) {
       VideoHttp.zoneRegExp = value;
@@ -73,7 +73,7 @@ List<SettingsModel> get recommendSettings => [
   ),
   getVideoFilterSelectModel(
     title: '视频时长',
-    suffix: 's',
+    suffix: '秒',
     key: SettingBoxKey.minDurationForRcmd,
     values: [0, 30, 60, 90, 120],
     onChanged: (value) => RecommendFilter.minDurationForRcmd = value,
@@ -96,7 +96,7 @@ List<SettingsModel> get recommendSettings => [
   ),
   SwitchModel(
     title: '过滤器也应用于相关视频',
-    subtitle: '视频详情页的相关视频也进行过滤¹',
+    subtitle: '视频详情页的相关视频也进行过滤①',
     leading: const Icon(Icons.explore_outlined),
     setKey: SettingBoxKey.applyFilterToRelatedVideos,
     defaultVal: true,
