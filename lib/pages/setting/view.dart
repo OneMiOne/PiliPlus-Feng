@@ -52,7 +52,7 @@ class _SettingPageState extends State<SettingPage> {
     ),
     _SettingsModel(
       type: SettingType.recommendSetting,
-      subtitle: '推荐来源（web/app）、刷新保留内容、过滤器',
+      subtitle: '推荐来源（Web/App）、刷新保留内容、过滤器',
       icon: Icon(Icons.explore_outlined),
     ),
     _SettingsModel(
@@ -72,7 +72,7 @@ class _SettingPageState extends State<SettingPage> {
     ),
     _SettingsModel(
       type: SettingType.extraSetting,
-      subtitle: '震动、搜索、收藏、ai、评论、动态、代理、更新检查等',
+      subtitle: '震动、搜索、收藏、AI、评论、动态、代理、更新检查等',
       icon: Icon(Icons.extension_outlined),
     ),
     _SettingsModel(
@@ -216,7 +216,7 @@ class _SettingPageState extends State<SettingPage> {
       context: context,
       builder: (context) {
         return MultiSelectDialog<LoginAccount>(
-          title: '选择要登出的账号uid',
+          title: '选择要登出的账号UID',
           initValues: const Iterable.empty(),
           values: {
             for (final i in Accounts.account.values) i: i.mid.toString(),
