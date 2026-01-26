@@ -1,80 +1,62 @@
-name: Build For Windows x64
-
+name: Build For Windows
 on:
-  workflow_call:
-    inputs:
-      tag:
-        description: "tag"
-        required: false
-        default: ""
-        type: string
-  workflow_dispatch:
-
+    workflow_dispatch:
+        inputs:
+            tag:
+                description: "Tag"
+                required: false
+                default: ""
+                type: string
 jobs:
-  build-windows-app:
-    name: Release Windows x64
-    runs-on: windows-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-
-      - name: Setup flutter
-        uses: subosito/flutter-action@v2
-        with:
-          channel: stable
-          flutter-version-file: pubspec.yaml
-
-      - name: Add fastforge and Inno Setup
-        run: |
-          dart pub global activate fastforge
-          choco install innosetup
-
-      - name: Add Chinese language file for Inno Setup
-        run: |
-          Copy-Item "windows/packaging/exe/ChineseSimplified.isl" "C:\Program Files (x86)\Inno Setup 6\Languages\ChineseSimplified.isl"
-        shell: pwsh
-
-      - name: Set and Extract version
-        shell: pwsh
-        run: lib/scripts/build.ps1
-
-      - name: Build Windows
-        run: |
-          fastforge package --platform windows --targets exe --flutter-build-args="dart-define-from-file=pili_release.json"
-
-      - name: Prepare Upload
-        run: |
-          mkdir -p Release/PiliPlus-Win
-          mkdir -p PiliPlus-Win-Setup
-          mv build/windows/x64/runner/Release/* Release/PiliPlus-Win/
-          mv dist/**/*.exe PiliPlus-Win-Setup/PiliPlus_windows_${{env.version}}_x64_setup.exe
-
-      - name: Compress
-        if: ${{ github.event.inputs.tag != '' }}
-        run: |
-          Compress-Archive -Path "Release/PiliPlus-Win" -DestinationPath "PiliPlus_windows_${{env.version}}_x64.zip"
-        shell: pwsh
-
-      - name: Release
-        if: ${{ github.event.inputs.tag != '' }}
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ github.event.inputs.tag }}
-          name: ${{ github.event.inputs.tag }}
-          files: |
-            PiliPlus_windows_*.zip
-            PiliPlus-Win-Setup/PiliPlus_windows_*.exe
-
-      - name: Upload windows file release
-        uses: actions/upload-artifact@v5
-        with:
-          name: Windows-file-x64-release
-          path: Release
-
-      - name: Upload windows setup release
-        uses: actions/upload-artifact@v5
-        with:
-          name: Windows-setup-x64-release
-          path: PiliPlus-Win-Setup
+    windows:
+        name: Release Windows
+        runs-on: windows-latest
+        permissions: write-all
+        steps:
+            - name: 代码迁出
+              uses: actions/checkout@v6
+              with:
+                  fetch-depth: 0
+            - name: 构建Java环境
+              uses: actions/setup-java@v5
+              with:
+                  distribution: "zulu"
+                  java-version: "17"
+            - name: 安装Flutter
+              uses: subosito/flutter-action@v2
+              id: flutter-action
+              with:
+                  channel: stable
+                  flutter-version-file: pubspec.yaml
+                  cache: true
+            - name: Apply Bottom Sheet Patch
+              working-directory: ${{ env.FLUTTER_ROOT }}
+              # Windows 环境下 Git Apply 依然有效
+              run: git apply ${{ github.workspace }}/lib/scripts/bottom_sheet_patch.diff
+              continue-on-error: true
+            - name: Set And Extract Version
+              shell: pwsh
+              run: lib/scripts/build.ps1 windows
+            - name: Flutter Build Windows
+              run: flutter build windows --release --dart-define-from-file=pili_release.json --pub
+            - name: Windows
+              shell: pwsh
+              run: |
+                  # 创建一个文件夹用来存放生成的 EXE 和 DLL
+                  $exportFolder = "PiliPlus_windows_${env:version}"
+                  New-Item -ItemType Directory -Path $exportFolder
+                  
+                  # 复制构建产物到文件夹
+                  if (Test-Path "build\windows\x64\runner\Release") {
+                      Copy-Item -Path "build\windows\x64\runner\Release\*" -Destination $exportFolder -Recurse
+                  } elseif (Test-Path "build\windows\runner\Release") {
+                      Copy-Item -Path "build\windows\runner\Release\*" -Destination $exportFolder -Recurse
+                  }
+                  
+                  # 压缩为 ZIP 方便下载
+                  Compress-Archive -Path "$exportFolder\*" -DestinationPath "$exportFolder.zip"
+            - name: 上传
+              uses: actions/upload-artifact@v5
+              with:
+                  name: Windows_Build
+                  path: PiliPlus_windows_*.zip
