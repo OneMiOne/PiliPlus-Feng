@@ -323,7 +323,14 @@ List<SettingsModel> get videoSettings => [
     NormalModel(
       title: '音频输出设备',
       leading: const Icon(Icons.speaker_outlined),
-      getSubtitle: () => '当前：${Pref.audioOutput}',
+      getSubtitle: () {
+        final currentNames = Pref.audioOutput.split(',');
+        final currentLabels = currentNames.map((name) {
+          final match = AudioOutput.values.where((e) => e.name == name);
+          return match.isNotEmpty ? match.first.label : name;
+        });
+        return '当前：${currentLabels.join(',')}';
+      },
       onTap: (context, setState) async {
         final result = await showDialog<List<String>>(
           context: context,
