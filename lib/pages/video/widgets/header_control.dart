@@ -815,6 +815,9 @@ class HeaderControlState extends State<HeaderControl>
     final hwdec = await player.platform!.getProperty(
       'hwdec-current',
     );
+    final ao = await player.platform!.getProperty(
+      'ao',
+    );
     if (!context.mounted) return;
     showDialog(
       context: context,
@@ -895,17 +898,17 @@ class HeaderControlState extends State<HeaderControl>
                     ),
                     ListTile(
                       dense: true,
-                      title: const Text("pitch"),
+                      title: const Text("Pitch"),
                       subtitle: Text(state.pitch.toString()),
                       onTap: () => Utils.copyText(
-                        'pitch\n${state.pitch}',
+                        'Pitch\n${state.pitch}',
                       ),
                     ),
                     ListTile(
                       dense: true,
-                      title: const Text("rate"),
+                      title: const Text("Rate"),
                       subtitle: Text(state.rate.toString()),
-                      onTap: () => Utils.copyText('rate\n${state.rate}'),
+                      onTap: () => Utils.copyText('Rate\n${state.rate}'),
                     ),
                     ListTile(
                       dense: true,
@@ -929,9 +932,15 @@ class HeaderControlState extends State<HeaderControl>
                     ),
                     ListTile(
                       dense: true,
-                      title: const Text('hwdec'),
+                      title: const Text('Hwdec'),
                       subtitle: Text(hwdec),
-                      onTap: () => Utils.copyText('hwdec\n$hwdec'),
+                      onTap: () => Utils.copyText('Hwdec\n$hwdec'),
+                    ),
+                    ListTile(
+                      dense: true,
+                      title: const Text('Ao'),
+                      subtitle: Text(ao),
+                      onTap: () => Utils.copyText('Ao\n$ao'),
                     ),
                   ],
                 ),
