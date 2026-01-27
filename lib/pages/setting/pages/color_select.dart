@@ -100,9 +100,8 @@ class _ColorSelectPageState extends State<ColorSelectPage> {
                   const Text('调色板风格'),
                   PopupMenuButton(
                     enabled: !ctr.dynamicColor.value,
-                    initialValue: _dynamicSchemeVariant,
+                    initialValue: Pref.schemeVariant,
                     onSelected: (item) {
-                      _dynamicSchemeVariant = item;
                       GStorage.setting.put(
                         SettingBoxKey.schemeVariant,
                         item.index,
@@ -121,7 +120,7 @@ class _ColorSelectPageState extends State<ColorSelectPage> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          _dynamicSchemeVariant.label,
+                          Pref.schemeVariant.label,
                           style: TextStyle(
                             height: 1,
                             fontSize: 13,
