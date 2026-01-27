@@ -26,8 +26,12 @@ extension TransitionExt on Transition {
         return '扩展（Size）';
       case Transition.zoom:
         return '缩放（Zoom）';
+      case Transition.topLevel:
+        return '顶层展开（Top Level）';
       case Transition.native:
         return '系统（Native）';
+      case Transition.cupertinoDialog:
+        return 'Apple 动画（Cupertino Dialog）';
       case Transition.circularReveal:
         return '圆展（Circular Reveal）';
       case Transition.fadeIn:
