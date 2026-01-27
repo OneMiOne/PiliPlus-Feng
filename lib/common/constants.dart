@@ -36,9 +36,9 @@ abstract final class Constants {
       'Mozilla/5.0 BiliDroid/2.0.1 (bbcallen@gmail.com) os/android model/android_hd mobi_app/android_hd build/2001100 channel/master innerVer/2001100 osVer/15 network/2';
   static const String statistics =
       '{"appId":5,"platform":3,"version":"2.0.1","abtest":""}';
-  // 请求时会自动encodeComponent
+  // 请求时会自动EncodeComponent
 
-  // app
+  // App
   static const String userAgentApp =
       'Mozilla/5.0 BiliDroid/8.43.0 (bbcallen@gmail.com) os/android model/android mobi_app/android build/8430300 channel/master innerVer/8430300 osVer/15 network/2';
 
@@ -118,8 +118,8 @@ abstract final class Constants {
     (id: 162, cname: "塞浦路斯", countryId: 357),
     (id: 161, cname: "塞内加尔", countryId: 221),
     (id: 160, cname: "塞拉利昂", countryId: 232),
-    (id: 159, cname: "萨摩亚，东部", countryId: 684),
-    (id: 158, cname: "萨摩亚，西部", countryId: 685),
+    (id: 159, cname: "萨摩亚（东部）", countryId: 684),
+    (id: 158, cname: "萨摩亚（西部）", countryId: 685),
     (id: 157, cname: "萨尔瓦多", countryId: 503),
     (id: 156, cname: "瑞士", countryId: 41),
     (id: 166, cname: "圣多美和普林西比", countryId: 239),
@@ -174,7 +174,7 @@ abstract final class Constants {
     (id: 206, cname: "伊拉克", countryId: 964),
     (id: 193, cname: "文莱", countryId: 673),
     (id: 192, cname: "委内瑞拉", countryId: 58),
-    (id: 191, cname: "维珍群岛(英属)", countryId: 1284),
+    (id: 191, cname: "维珍群岛（英属）", countryId: 1284),
     (id: 178, cname: "泰国", countryId: 66),
     (id: 177, cname: "索马里", countryId: 252),
     (id: 176, cname: "所罗门群岛", countryId: 677),
@@ -187,7 +187,7 @@ abstract final class Constants {
     (id: 169, cname: "圣皮埃尔和密克隆群岛", countryId: 508),
     (id: 179, cname: "坦桑尼亚", countryId: 255),
     (id: 180, cname: "汤加", countryId: 676),
-    (id: 190, cname: "维珍群岛(美属)", countryId: 1340),
+    (id: 190, cname: "维珍群岛（美属）", countryId: 1340),
     (id: 189, cname: "瓦努阿图", countryId: 678),
     (id: 188, cname: "托克劳岛", countryId: 690),
     (id: 187, cname: "土库曼斯坦", countryId: 993),
@@ -276,7 +276,7 @@ abstract final class Constants {
     (id: 79, cname: "格林纳达", countryId: 1473),
     (id: 78, cname: "哥斯达黎加", countryId: 506),
     (id: 77, cname: "哥伦比亚", countryId: 57),
-    (id: 76, cname: "刚果(金)", countryId: 243),
+    (id: 76, cname: "刚果（金）", countryId: 243),
     (id: 75, cname: "刚果", countryId: 242),
     (id: 74, cname: "冈比亚", countryId: 220),
     (id: 73, cname: "福克兰岛", countryId: 500),
