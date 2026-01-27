@@ -109,7 +109,7 @@ abstract final class UserHttp {
     bool switchStatus, {
     Account? account,
   }) async {
-    // 暂停switchStatus传true 否则false
+    // 暂停SwitchStatus传True 否则False
     account ??= Accounts.history;
     final res = await Request().post(
       Api.pauseHistory,
@@ -180,7 +180,7 @@ abstract final class UserHttp {
       options: Options(contentType: Headers.formUrlEncodedContentType),
     );
     if (res.data['code'] == 0) {
-      SmartDialog.showToast('yeah！稍后再看');
+      SmartDialog.showToast('Yeah！稍后再看');
       return const Success(null);
     } else {
       SmartDialog.showToast(res.data['message'].toString());
@@ -200,7 +200,7 @@ abstract final class UserHttp {
       options: Options(contentType: Headers.formUrlEncodedContentType),
     );
     if (res.data['code'] == 0) {
-      SmartDialog.showToast('yeah！成功移除');
+      SmartDialog.showToast('Yeah！成功移除');
       return const Success(null);
     } else {
       SmartDialog.showToast(res.data['message'].toString());
