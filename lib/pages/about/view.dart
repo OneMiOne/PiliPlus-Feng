@@ -284,12 +284,14 @@ Commit Hash: ${BuildConfig.commitHash}''',
             onTap: () => showDialog(
               context: context,
               builder: (context) {
+                const contentPadding = EdgeInsets.symmetric(horizontal: 24.0);
                 return SimpleDialog(
                   clipBehavior: Clip.hardEdge,
                   title: const Text('是否重置所有设置？'),
                   children: [
                     ListTile(
                       dense: true,
+                      contentPadding: contentPadding,
                       onTap: () async {
                         Get.back();
                         await Future.wait([
@@ -302,6 +304,7 @@ Commit Hash: ${BuildConfig.commitHash}''',
                     ),
                     ListTile(
                       dense: true,
+                      contentPadding: contentPadding,
                       onTap: () async {
                         Get.back();
                         await Future.wait([
@@ -338,6 +341,7 @@ Future<void> showImportExportDialog<T>(
   context: context,
   builder: (context) {
     const style = TextStyle(fontSize: 15);
+    const contentPadding = EdgeInsets.symmetric(horizontal: 24.0);
     return SimpleDialog(
       clipBehavior: Clip.hardEdge,
       title: Text('导入/导出$title'),
@@ -345,6 +349,7 @@ Future<void> showImportExportDialog<T>(
         if (label != null)
           ListTile(
             dense: true,
+            contentPadding: contentPadding,
             title: const Text('导出文件至本地', style: style),
             onTap: () {
               Get.back();
@@ -361,6 +366,7 @@ Future<void> showImportExportDialog<T>(
           ),
         ListTile(
           dense: true,
+          contentPadding: contentPadding,
           title: Text('导出$title至剪贴板', style: style),
           onTap: () {
             Get.back();
@@ -369,6 +375,7 @@ Future<void> showImportExportDialog<T>(
         ),
         ListTile(
           dense: true,
+          contentPadding: contentPadding,
           title: Text('从剪贴板导入$title', style: style),
           onTap: () async {
             Get.back();
@@ -445,6 +452,7 @@ Future<void> showImportExportDialog<T>(
         ),
         ListTile(
           dense: true,
+          contentPadding: contentPadding,
           title: Text('输入$title', style: style),
           onTap: () {
             Get.back();
