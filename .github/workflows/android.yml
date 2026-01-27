@@ -39,29 +39,29 @@ jobs:
                   flutter-version-file: pubspec.yaml
                   cache: true
 
-            - name: apply bottom sheet patch
+            - name: Apply Bottom Sheet Patch
               working-directory: ${{ env.FLUTTER_ROOT }}
               run: git apply $GITHUB_WORKSPACE/lib/scripts/bottom_sheet_patch.diff
               continue-on-error: true
 
-            - name: Write key
+            - name: Write Key
               run: |
-                  if [ ! -z "${{ secrets.SIGN_KEYSTORE_BASE64 }}" ]; then
-                    echo "${{ secrets.SIGN_KEYSTORE_BASE64 }}" | base64 --decode > android/app/key.jks
+                  if [ ! -z "${{ secrets.SIGNING_KEY }}" ]; then
+                    echo "${{ secrets.SIGNING_KEY }}" | base64 --decode > android/app/key.jks
                     echo "storeFile=key.jks" >> android/key.properties
-                    echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" >> android/key.properties
-                    echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
+                    echo "storePassword=${{ secrets.KEY_STORE_PASSWORD }}" >> android/key.properties
+                    echo "keyAlias=${{ secrets.ALIAS }}" >> android/key.properties
                     echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
                   fi
 
-            - name: Set and Extract version
+            - name: Set And Extract Version
               shell: pwsh
               run: lib/scripts/build.ps1 android
 
-            - name: flutter build apk
+            - name: Flutter Build Apk
               run: flutter build apk --release --split-per-abi --dart-define-from-file=pili_release.json --pub
 
-            - name: rename
+            - name: Rename
               run: |
                   for file in build/app/outputs/flutter-apk/app-*-release.apk; do
                     abi=$(echo "$file" | sed -E 's|.*app-(.*)-release\.apk|\1|')
