@@ -120,7 +120,7 @@ List<SettingsModel> get styleSettings => [
   NormalModel(
     title: '页面过渡动画',
     leading: const Icon(Icons.animation),
-    getSubtitle: () => '当前：${Pref.pageTransition.name}',
+    getSubtitle: () => '当前：${Pref.pageTransition.label}',
     onTap: (context, setState) async {
       final result = await showDialog<Transition>(
         context: context,
@@ -128,7 +128,7 @@ List<SettingsModel> get styleSettings => [
           return SelectDialog<Transition>(
             title: '页面过渡动画',
             value: Pref.pageTransition,
-            values: Transition.values.map((e) => (e, e.name)).toList(),
+            values: Transition.values.map((e) => (e, e.label)).toList(),
           );
         },
       );
@@ -160,7 +160,7 @@ List<SettingsModel> get styleSettings => [
         context: context,
         builder: (context) {
           return DualSlideDialog(
-            title: '列表最大列宽度（默认240dp）',
+            title: '列表最大列宽度（默认240DP）',
             value1: Pref.recommendCardWidth,
             value2: Pref.smallCardWidth,
             description1: '主页推荐流',
@@ -168,7 +168,7 @@ List<SettingsModel> get styleSettings => [
             min: 150.0,
             max: 500.0,
             divisions: 35,
-            suffix: 'dp',
+            suffix: 'DP',
           );
         },
       );
@@ -182,9 +182,9 @@ List<SettingsModel> get styleSettings => [
       }
     },
     leading: const Icon(Icons.calendar_view_week_outlined),
-    title: '列表宽度（dp）限制',
+    title: '列表宽度（DP）限制',
     getSubtitle: () =>
-        '当前: 主页${Pref.recommendCardWidth.toInt()}dp 其他${Pref.smallCardWidth.toInt()}dp，屏幕宽度:${MediaQuery.widthOf(Get.context!).toPrecision(2)}dp。宽度越小列数越多。',
+        '当前: 主页${Pref.recommendCardWidth.toInt()}DP、其他${Pref.smallCardWidth.toInt()}DP、屏幕宽度${MediaQuery.widthOf(Get.context!).toPrecision(2)}DP。宽度越小列数越多。',
   ),
   SwitchModel(
     title: '视频播放页使用深色主题',
@@ -373,7 +373,7 @@ List<SettingsModel> get styleSettings => [
               inputFormatters: [
                 FilteringTextInputFormatter.allow(RegExp(r'[\d\.]+')),
               ],
-              decoration: const InputDecoration(suffixText: 'px'),
+              decoration: const InputDecoration(suffixText: '像素'),
             ),
             actions: [
               TextButton(
@@ -501,7 +501,7 @@ List<SettingsModel> get styleSettings => [
       );
     },
     title: '深色下图片颜色叠加',
-    subtitle: '显示颜色=图片原色x所选颜色，大图查看不受影响',
+    subtitle: '显示颜色=图片原色X所选颜色，大图查看不受影响',
     leading: const Icon(Icons.format_color_fill_outlined),
     getTrailing: () => Container(
       padding: const EdgeInsets.only(right: 8.0),
@@ -536,7 +536,7 @@ List<SettingsModel> get styleSettings => [
     },
     leading: const Icon(Icons.opacity_outlined),
     title: '气泡提示不透明度',
-    subtitle: '自定义气泡提示(Toast)不透明度',
+    subtitle: '自定义气泡提示（Toast）不透明度',
     getTrailing: () => Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Text(
@@ -648,7 +648,7 @@ List<SettingsModel> get styleSettings => [
                     FilteringTextInputFormatter.allow(RegExp(r'[\d\.]+')),
                   ],
                   decoration: InputDecoration(
-                    labelText: const ['mass', 'stiffness', 'damping'][index],
+                    labelText: const ['Mass', 'Stiffness', 'Damping'][index],
                   ),
                 ),
               ),
@@ -735,7 +735,7 @@ List<SettingsModel> get styleSettings => [
   ),
   SwitchModel(
     title: '返回时直接退出',
-    subtitle: '开启后在主页任意tab按返回键都直接退出，关闭则先回到Navbar的第一个tab',
+    subtitle: '开启后在主页任意Tab按返回键都直接退出，关闭则先回到Navbar的第一个Tab',
     leading: const Icon(Icons.exit_to_app_outlined),
     setKey: SettingBoxKey.directExitOnBack,
     defaultVal: false,
