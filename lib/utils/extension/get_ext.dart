@@ -14,10 +14,6 @@ extension TransitionExt on Transition {
         return '左滑（Right To Left）';
       case Transition.leftToRight:
         return '右滑（Left To Right）';
-      case Transition.topToBottom:
-        return '下滑（Top To Bottom）';
-      case Transition.bottomToTop:
-        return '上滑（Bottom To Top）';
       case Transition.noTransition:
         return '无动画（No Transition）';
       case Transition.rightToLeftWithFade:
@@ -37,9 +33,9 @@ extension TransitionExt on Transition {
       case Transition.fadeIn:
         return '淡入（Fade In）';
       case Transition.downToUp:
-        return '上展（Down To Up）';
+        return '上滑（Down To Up）';
       case Transition.upToDown:
-        return '下展（Up To Down）';
+        return '下滑（Up To Down）';
       default:
         return name;
     }
