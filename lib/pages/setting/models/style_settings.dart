@@ -184,7 +184,7 @@ List<SettingsModel> get styleSettings => [
     leading: const Icon(Icons.calendar_view_week_outlined),
     title: '列表宽度（DP）限制',
     getSubtitle: () =>
-        '当前: 主页${Pref.recommendCardWidth.toInt()}DP、其他${Pref.smallCardWidth.toInt()}DP、屏幕宽度${MediaQuery.widthOf(Get.context!).toPrecision(2)}DP。宽度越小列数越多。',
+        '当前：主页${Pref.recommendCardWidth.toInt()}DP、其他${Pref.smallCardWidth.toInt()}DP、屏幕宽度${MediaQuery.widthOf(Get.context!).toPrecision(2)}DP。宽度越小列数越多。',
   ),
   SwitchModel(
     title: '视频播放页使用深色主题',
