@@ -89,7 +89,7 @@ class _SponsorBlockPageState extends State<SponsorBlockPage> {
                   ),
                   controller: _textController,
                   autofocus: true,
-                  decoration: const InputDecoration(suffixText: 's'),
+                  decoration: const InputDecoration(suffixText: '秒'),
                   inputFormatters: [
                     FilteringTextInputFormatter.allow(RegExp(r'[\d\.]+')),
                   ],
@@ -264,7 +264,7 @@ class _SponsorBlockPageState extends State<SponsorBlockPage> {
         ),
         subtitle: Text(
           // from origin extension
-          '此功能追踪您跳过了哪些片段，让用户知道他们提交的片段帮助了多少人。同时点赞会作为依据，确保垃圾信息不会污染数据库。在您每次跳过片段时，我们都会向服务器发送一条消息。希望大家开启此项设置，以便得到更准确的统计数据。:)',
+          '此功能追踪您跳过了哪些片段，让用户知道他们提交的片段帮助了多少人。同时点赞会作为依据，确保垃圾信息不会污染数据库。在您每次跳过片段时，我们都会向服务器发送一条消息。希望大家开启此项设置，以便得到更准确的统计数据。',
           style: subTitleStyle,
         ),
         trailing: Transform.scale(
