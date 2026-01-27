@@ -39,7 +39,6 @@ class Item {
 
 class _ColorSelectPageState extends State<ColorSelectPage> {
   final ctr = Get.put(ColorSelectController());
-  FlexSchemeVariant _dynamicSchemeVariant = Pref.schemeVariant;
 
   @override
   Widget build(BuildContext context) {
@@ -152,7 +151,7 @@ class _ColorSelectPageState extends State<ColorSelectPage> {
                 child: const Icon(Icons.palette_outlined),
               ),
               subtitle: Text(
-                _dynamicSchemeVariant.description,
+                Pref.schemeVariant.labelDesc,
                 style: const TextStyle(fontSize: 12),
               ),
             ),
@@ -216,7 +215,7 @@ class _ColorSelectPageState extends State<ColorSelectPage> {
                                   children: [
                                     ColorPalette(
                                       colorScheme: item.color.asColorSchemeSeed(
-                                        _dynamicSchemeVariant,
+                                        Pref.schemeVariant,
                                         theme.brightness,
                                       ),
                                       selected: ctr.currentColor.value == index,
