@@ -62,7 +62,7 @@ extension FlexSchemeVariantExt on FlexSchemeVariant {
       case FlexSchemeVariant.material:
         return 'Material-3';
       case FlexSchemeVariant.material2:
-        return 'Material-3 Legacy';
+        return 'Material-3-Legacy';
       case FlexSchemeVariant.soft:
         return '柔和（Soft）';
       case FlexSchemeVariant.vivid:
