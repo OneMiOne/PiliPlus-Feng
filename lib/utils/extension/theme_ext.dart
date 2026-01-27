@@ -15,7 +15,7 @@ extension ColorSchemeExt on ColorScheme {
 
 extension ColorExtension on Color {
   Color darken([double amount = .5]) {
-    assert(amount >= 0 && amount <= 1, 'Amount must be between 0 and 1');
+    assert(amount >= 0 && amount <= 1, 'Amount Must Be Between 0 And 1');
     return Color.lerp(this, Colors.black, amount)!;
   }
 
