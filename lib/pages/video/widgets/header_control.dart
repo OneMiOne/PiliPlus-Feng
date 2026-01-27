@@ -756,7 +756,7 @@ class HeaderControlState extends State<HeaderControl>
                         }
                       }
                     } catch (e) {
-                      SmartDialog.showToast('加载失败: $e');
+                      SmartDialog.showToast('加载失败：$e');
                     }
                   },
                   leading: const Icon(Icons.file_open_outlined, size: 20),
@@ -1003,7 +1003,7 @@ class HeaderControlState extends State<HeaderControl>
                     height: 45,
                     child: GestureDetector(
                       onTap: () => SmartDialog.showToast(
-                        '标灰画质需要bilibili会员（已是会员？请关闭无痕模式）；4k和杜比视界播放效果可能不佳',
+                        '标灰画质需要Bilibili会员（已是会员？请关闭无痕模式）；4K和杜比视界播放效果可能不佳',
                       ),
                       child: Row(
                         spacing: 8,
