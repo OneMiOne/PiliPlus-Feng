@@ -413,7 +413,7 @@ List<SettingsModel> get extraSettings => [
   ),
   NormalModel(
     title: '横向滑动阈值',
-    getSubtitle: () => '当前:「${Pref.touchSlopH}」',
+    getSubtitle: () => '当前：「${Pref.touchSlopH}」',
     onTap: (context, setState) {
       String initialValue = Pref.touchSlopH.toString();
       showDialog(
@@ -464,7 +464,7 @@ List<SettingsModel> get extraSettings => [
   NormalModel(
     title: '刷新滑动距离',
     leading: const Icon(Icons.refresh),
-    getSubtitle: () => '当前滑动距离: ${Pref.refreshDragPercentage}像素',
+    getSubtitle: () => '当前滑动距离：${Pref.refreshDragPercentage}像素',
     onTap: (context, setState) async {
       final result = await showDialog<double>(
         context: context,
@@ -491,7 +491,7 @@ List<SettingsModel> get extraSettings => [
   NormalModel(
     title: '刷新指示器高度',
     leading: const Icon(Icons.height),
-    getSubtitle: () => '当前指示器高度: ${Pref.refreshDisplacement}',
+    getSubtitle: () => '当前指示器高度：${Pref.refreshDisplacement}',
     onTap: (context, setState) async {
       final result = await showDialog<double>(
         context: context,
@@ -551,9 +551,9 @@ List<SettingsModel> get extraSettings => [
           fallback = '';
         } else {
           fallback =
-              '，无参数时:「${AudioNormalization.getTitleFromConfig(fallback)}」';
+              '，无参数时：「${AudioNormalization.getTitleFromConfig(fallback)}」';
         }
-        return '当前:「$audioNormalization」$fallback';
+        return '当前：「$audioNormalization」$fallback';
       },
       onTap: audioNormalization,
     ),
@@ -561,7 +561,7 @@ List<SettingsModel> get extraSettings => [
     title: '超分辨率',
     leading: const Icon(Icons.stay_current_landscape_outlined),
     getSubtitle: () =>
-        '当前:「${Pref.superResolutionType.title}」\n默认设置对番剧生效，其他视频默认关闭\n超分辨率需要启用硬件解码，若启用硬件解码后仍然不生效，尝试切换硬件解码器为 Auto-Copy',
+        '当前：「${Pref.superResolutionType.title}」\n默认设置对番剧生效，其他视频默认关闭\n超分辨率需要启用硬件解码，若启用硬件解码后仍然不生效，尝试切换硬件解码器为 Auto-Copy',
     onTap: (context, setState) async {
       final result = await showDialog<SuperResolutionType>(
         context: context,
@@ -1102,7 +1102,7 @@ List<SettingsModel> get extraSettings => [
     title: '最大缓存大小',
     getSubtitle: () {
       final num = Pref.maxCacheSize;
-      return '当前最大缓存大小: 「${num == 0 ? '无限' : CacheManager.formatSize(Pref.maxCacheSize)}」';
+      return '当前最大缓存大小：「${num == 0 ? '无限' : CacheManager.formatSize(Pref.maxCacheSize)}」';
     },
     onTap: (context, setState) {
       showDialog(
