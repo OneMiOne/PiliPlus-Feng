@@ -27,7 +27,7 @@ class _SetDisplayModeState extends State<SetDisplayMode> {
     init();
   }
 
-  // 获取所有的mode
+  // 获取所有的Mode
   Future<void> fetchAll() async {
     preferred = await FlutterDisplayMode.preferred;
     active = await FlutterDisplayMode.active;
@@ -37,7 +37,7 @@ class _SetDisplayModeState extends State<SetDisplayMode> {
     }
   }
 
-  // 初始化mode/手动设置
+  // 初始化Mode/手动设置
   Future<void> init() async {
     try {
       modes = await FlutterDisplayMode.supported;
@@ -70,7 +70,7 @@ class _SetDisplayModeState extends State<SetDisplayMode> {
                 MediaQuery.viewPaddingOf(context).copyWith(top: 0, bottom: 0) +
                 const EdgeInsets.only(left: 25, top: 10, bottom: 5),
             child: Text(
-              '没有生效？重启app试试',
+              '没有生效？重启App试试',
               style: TextStyle(color: Theme.of(context).colorScheme.outline),
             ),
           ),
@@ -95,7 +95,7 @@ class _SetDisplayModeState extends State<SetDisplayMode> {
                     value: mode,
                     title: mode == DisplayMode.auto
                         ? const Text('自动')
-                        : Text('$mode${mode == active ? '  [系统]' : ''}'),
+                        : Text('$mode${mode == active ? '（系统）' : ''}'),
                   );
                 },
               ),
