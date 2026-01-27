@@ -113,7 +113,7 @@ class _ColorSelectPageState extends State<ColorSelectPage> {
                         .map(
                           (item) => PopupMenuItem<FlexSchemeVariant>(
                             value: item,
-                            child: Text(item.variantName),
+                            child: Text(item.label),
                           ),
                         )
                         .toList(),
@@ -121,7 +121,7 @@ class _ColorSelectPageState extends State<ColorSelectPage> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          _dynamicSchemeVariant.variantName,
+                          _dynamicSchemeVariant.label,
                           style: TextStyle(
                             height: 1,
                             fontSize: 13,
