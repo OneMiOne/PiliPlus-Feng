@@ -355,7 +355,7 @@ Future<void> showImportExportDialog<T>(
               Get.back();
               final res = utf8.encode(toJson());
               final name =
-                  'piliplus_${label}_${context.isTablet ? 'pad' : 'phone'}_'
+                  'PiliPlus_${label}_${context.isTablet ? 'Pad' : 'Phone'}_'
                   '${DateFormat('yyyyMMddHHmmss').format(DateTime.now())}.json';
               Utils.saveBytes2File(
                 name: name,
@@ -394,7 +394,7 @@ Future<void> showImportExportDialog<T>(
               json = jsonDecode(text);
               formatText = Utils.jsonEncoder.convert(json);
             } catch (e) {
-              SmartDialog.showToast('解析json失败：$e');
+              SmartDialog.showToast('解析JSON失败：$e');
               return;
             }
             final highlight = Highlight()..registerLanguage('json', langJson);
@@ -482,7 +482,7 @@ Future<void> showImportExportDialog<T>(
                         return null;
                       } catch (e) {
                         if (e is FormatException) {}
-                        return '解析json失败：$e';
+                        return '解析JSON失败：$e';
                       }
                     },
                   ),
