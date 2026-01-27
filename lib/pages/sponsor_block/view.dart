@@ -127,7 +127,7 @@ class _SponsorBlockPageState extends State<SponsorBlockPage> {
           style: subTitleStyle,
         ),
         trailing: Text(
-          '${_blockLimit}s',
+          '${_blockLimit}秒',
           style: const TextStyle(fontSize: 13),
         ),
       );
