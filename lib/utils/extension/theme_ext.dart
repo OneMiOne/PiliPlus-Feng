@@ -110,7 +110,7 @@ extension FlexSchemeVariantExt on FlexSchemeVariant {
         return '缤纷水果，明快、清新的多种色彩组合。';
       case FlexSchemeVariant.material:
         return '标准的 Material-3 设计风格。';
-      case FlexSchemeVariant.material2:
+      case FlexSchemeVariant.material3Legacy:
         return '旧版 Material-3 风格，兼容 Flutter 3.22 前的风格。';
       case FlexSchemeVariant.soft:
         return '柔和，降低对比度与饱和度，提供更舒适的视觉体验。';
