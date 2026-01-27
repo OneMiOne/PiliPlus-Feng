@@ -131,7 +131,7 @@ class _PlDanmakuState extends State<PlDanmaku> {
         } else {
           _controller!.addDanmaku(
             DanmakuContentItem(
-              e.content,
+              e.count > 1 ? '（${e.count}）${e.content}' : e.content,
               color: blockColorful
                   ? Colors.white
                   : DmUtils.decimalToColor(e.color),
@@ -139,7 +139,6 @@ class _PlDanmakuState extends State<PlDanmaku> {
               isColorful:
                   playerController.showVipDanmaku &&
                   e.colorful == DmColorfulType.VipGradualColor,
-              count: e.count > 1 ? e.count : null,
               selfSend: e.isSelf,
               extra: VideoDanmaku(
                 id: e.id.toInt(),
