@@ -133,7 +133,7 @@ SettingsModel getBanWordModel({
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('使用|隔开，如：尝试|测试'),
+                const Text('使用“|”隔开，如：尝试|测试'),
                 TextFormField(
                   autofocus: true,
                   initialValue: editValue,
@@ -192,7 +192,7 @@ SettingsModel getVideoFilterSelectModel({
     getSubtitle: subtitle == null
         ? () => isFilter
               ? '过滤掉$title小于「$value${suffix ?? ""}」的视频'
-              : '当前$title:「$value${suffix ?? ""}」'
+              : '当前$title：「$value${suffix ?? ""}」'
         : null,
     onTap: (context, setState) async {
       var result = await showDialog<int>(
