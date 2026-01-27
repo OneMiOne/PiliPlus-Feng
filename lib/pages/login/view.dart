@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
     return Column(
       children: [
         const SizedBox(height: 20),
-        const Text('使用 bilibili 官方 App 扫码登录'),
+        const Text('使用 Bilibili 官方 App 扫码登录'),
         const SizedBox(height: 20),
         Obx(
           () => Text(
@@ -77,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                 Uint8List pngBytes = byteData!.buffer.asUint8List();
                 SmartDialog.dismiss();
                 String picName =
-                    "${Constants.appName}_loginQRCode_${ImageUtils.time}";
+                    "${Constants.appName}_LoginQRCode_${ImageUtils.time}";
                 ImageUtils.saveByteImg(bytes: pngBytes, fileName: picName);
               },
               icon: const Icon(Icons.save),
@@ -140,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
             return GestureDetector(
               onTap: () => Utils.copyText(
                 url,
-                toastText: '已复制到剪贴板，可粘贴至已登录的app私信处发送，然后点击已发送的链接打开',
+                toastText: '已复制到剪贴板，可粘贴至已登录的App私信处发送，然后点击已发送的链接打开',
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(
@@ -348,7 +348,7 @@ class _LoginPageState extends State<LoginPage> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            '根据 bilibili 官方登录接口规范，密码将在本地加盐、加密后传输。\n'
+            '根据 Bilibili 官方登录接口规范，密码将在本地加盐、加密后传输。\n'
             '盐与公钥均由官方提供；以 RSA/ECB/PKCS1Padding 方式加密。\n'
             '账号密码仅用于该登录接口，不予保存；本地仅存储登录凭证。\n'
             '请务必在 ${Constants.appName} 开源仓库等可信渠道下载安装。',
@@ -505,7 +505,7 @@ class _LoginPageState extends State<LoginPage> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            '手机号仅用于 bilibili 官方发送验证码与登录接口，不予保存；\n'
+            '手机号仅用于 Bilibili 官方发送验证码与登录接口，不予保存；\n'
             '本地仅存储登录凭证。\n'
             '请务必在 ${Constants.appName} 开源仓库等可信渠道下载安装。',
             textAlign: TextAlign.center,
