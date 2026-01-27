@@ -143,7 +143,7 @@ List<SettingsModel> get extraSettings => [
   ),
   SwitchModel(
     title: '检查未读动态',
-    subtitle: '点击设置检查周期(min)',
+    subtitle: '点击设置检查周期（分钟）',
     leading: const Icon(Icons.notifications_none),
     setKey: SettingBoxKey.checkDynamic,
     defaultVal: true,
@@ -161,7 +161,7 @@ List<SettingsModel> get extraSettings => [
               keyboardType: TextInputType.number,
               onChanged: (value) => dynamicPeriod = value,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-              decoration: const InputDecoration(suffixText: 'min'),
+              decoration: const InputDecoration(suffixText: '分钟'),
             ),
             actions: [
               TextButton(
@@ -252,7 +252,7 @@ List<SettingsModel> get extraSettings => [
   ),
   NormalModel(
     title: '评论折叠行数',
-    subtitle: '0行为不折叠',
+    subtitle: '设置“0”为不折叠',
     leading: const Icon(Icons.compress),
     getTrailing: () => Text(
       '${ReplyItemGrpc.replyLengthLimit}行',
@@ -464,7 +464,7 @@ List<SettingsModel> get extraSettings => [
   NormalModel(
     title: '刷新滑动距离',
     leading: const Icon(Icons.refresh),
-    getSubtitle: () => '当前滑动距离: ${Pref.refreshDragPercentage}x',
+    getSubtitle: () => '当前滑动距离: ${Pref.refreshDragPercentage}像素',
     onTap: (context, setState) async {
       final result = await showDialog<double>(
         context: context,
@@ -476,7 +476,7 @@ List<SettingsModel> get extraSettings => [
             divisions: 8,
             precise: 2,
             value: Pref.refreshDragPercentage,
-            suffix: 'x',
+            suffix: '像素',
           );
         },
       );
@@ -561,7 +561,7 @@ List<SettingsModel> get extraSettings => [
     title: '超分辨率',
     leading: const Icon(Icons.stay_current_landscape_outlined),
     getSubtitle: () =>
-        '当前:「${Pref.superResolutionType.title}」\n默认设置对番剧生效, 其他视频默认关闭\n超分辨率需要启用硬件解码, 若启用硬件解码后仍然不生效, 尝试切换硬件解码器为 auto-copy',
+        '当前:「${Pref.superResolutionType.title}」\n默认设置对番剧生效，其他视频默认关闭\n超分辨率需要启用硬件解码，若启用硬件解码后仍然不生效，尝试切换硬件解码器为 Auto-Copy',
     onTap: (context, setState) async {
       final result = await showDialog<SuperResolutionType>(
         context: context,
@@ -861,7 +861,7 @@ List<SettingsModel> get extraSettings => [
     defaultVal: false,
   ),
   const SwitchModel(
-    title: '消息页禁用"收到的赞"功能',
+    title: '消息页禁用“收到的赞”功能',
     subtitle: '禁止打开入口，降低网络社交依赖',
     leading: Icon(Icons.beach_access_outlined),
     setKey: SettingBoxKey.disableLikeMsg,
@@ -883,7 +883,7 @@ List<SettingsModel> get extraSettings => [
   ),
   NormalModel(
     title: '连接重试次数',
-    subtitle: '为0时禁用',
+    subtitle: '设置0时禁用',
     leading: const Icon(Icons.repeat),
     onTap: (context, setState) async {
       final result = await showDialog<double>(
@@ -908,7 +908,7 @@ List<SettingsModel> get extraSettings => [
   ),
   NormalModel(
     title: '连接重试间隔',
-    subtitle: '实际间隔 = 间隔 * 第x次重试',
+    subtitle: '实际间隔=间隔X第X次重试',
     leading: const Icon(Icons.more_time_outlined),
     onTap: (context, setState) async {
       final result = await showDialog<double>(
@@ -989,7 +989,7 @@ List<SettingsModel> get extraSettings => [
     onChanged: (val) => ItemModulesModel.showDynInteraction = val,
   ),
   NormalModel(
-    title: '用户页默认展示TAB',
+    title: '用户页默认展示Tab',
     leading: const Icon(Icons.tab),
     getSubtitle: () => '当前优先展示「${Pref.memberTab.title}」',
     onTap: (context, setState) async {
@@ -997,7 +997,7 @@ List<SettingsModel> get extraSettings => [
         context: context,
         builder: (context) {
           return SelectDialog<MemberTabType>(
-            title: '用户页默认展示TAB',
+            title: '用户页默认展示Tab',
             value: Pref.memberTab,
             values: MemberTabType.values.map((e) => (e, e.title)).toList(),
           );
@@ -1010,7 +1010,7 @@ List<SettingsModel> get extraSettings => [
     },
   ),
   SwitchModel(
-    title: '显示UP主页小店TAB',
+    title: '显示UP主页小店Tab',
     leading: const Icon(Icons.shop_outlined),
     setKey: SettingBoxKey.showMemberShop,
     defaultVal: false,
@@ -1088,7 +1088,7 @@ List<SettingsModel> get extraSettings => [
     },
     leading: const Icon(Icons.airplane_ticket_outlined),
     title: '设置代理',
-    subtitle: '设置代理 host:port',
+    subtitle: '设置代理 Host:Port',
     setKey: SettingBoxKey.enableSystemProxy,
   ),
   const SwitchModel(
@@ -1118,7 +1118,7 @@ List<SettingsModel> get extraSettings => [
               inputFormatters: [
                 FilteringTextInputFormatter.allow(RegExp(r'[\d\.]+')),
               ],
-              decoration: const InputDecoration(suffixText: 'MB'),
+              decoration: const InputDecoration(suffixText: 'MiB'),
             ),
             actions: [
               TextButton(
@@ -1185,7 +1185,7 @@ Future<void> audioNormalization(
         '3',
       };
       return SelectDialog<String>(
-        title: fallback ? '服务器无loudnorm配置时使用' : '音量均衡',
+        title: fallback ? '服务器无Loudnorm配置时使用' : '音量均衡',
         toggleable: true,
         value: audioNormalization,
         values: values
@@ -1217,7 +1217,7 @@ Future<void> audioNormalization(
               mainAxisSize: MainAxisSize.min,
               spacing: 16,
               children: [
-                const Text('等同于 --lavfi-complex="[aid1] 参数 [ao]"'),
+                const Text('等同于 --Lavfi-Complex="[Aid1] 参数 [Ao]"'),
                 TextField(
                   autofocus: true,
                   onChanged: (value) => param = value,
