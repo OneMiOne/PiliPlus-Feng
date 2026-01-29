@@ -60,7 +60,7 @@ abstract final class LoginUtils {
           accountService.isLogin.value = true;
         }
 
-        SmartDialog.showToast('main登录成功');
+        SmartDialog.showToast('Main登录成功');
         if (response != Pref.userInfoCache) {
           await GStorage.userInfo.put('userInfoCache', response);
         }
@@ -69,7 +69,7 @@ abstract final class LoginUtils {
       // 获取用户信息失败
       await Accounts.deleteAll({account});
       SmartDialog.showNotify(
-        msg: '登录失败，请检查cookie是否正确，${res.toString()}',
+        msg: '登录失败，请检查Cookie是否正确，${res.toString()}',
         notifyType: NotifyType.warning,
       );
     }
