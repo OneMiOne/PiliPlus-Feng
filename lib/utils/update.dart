@@ -51,7 +51,7 @@ abstract final class Update {
               child: Text(text),
             );
             return AlertDialog(
-              title: const Text('🎉 发现新版本 '),
+              title: const Text('发现新版本 '),
               content: SizedBox(
                 height: 280,
                 child: SingleChildScrollView(
@@ -69,7 +69,7 @@ abstract final class Update {
                           '${Constants.sourceCodeUrl}/commits/main',
                         ),
                         child: Text(
-                          "点此查看完整更新(即commit)内容",
+                          "点此查看完整更新内容",
                           style: TextStyle(
                             color: theme.colorScheme.primary,
                           ),
@@ -110,7 +110,7 @@ abstract final class Update {
                   downloadBtn('deb', ext: 'deb'),
                   downloadBtn('targz', ext: 'tar.gz'),
                 ] else
-                  downloadBtn('Github'),
+                  downloadBtn('GitHub'),
               ],
             );
           },
